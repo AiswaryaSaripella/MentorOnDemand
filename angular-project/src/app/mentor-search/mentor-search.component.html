@@ -1,0 +1,93 @@
+
+<div *ngIf="length==0" class="text-danger">
+    No Trainings Available Sorry
+</div>
+<div *ngFor="let mentorDetail of mentorDetails;let i=index ">
+
+
+    <div class="container shadow ">
+                    <a  data-id="i.id" class="hello" style="text-decoration:none" [id]=i>
+                        <div class="row">
+                            <div class="mr-auto mt-3 mb-3">
+                                <img src="/assets/male-photo.jpg" alt="photo cant be dispalyed" height="100px" width="100px">
+                            </div>
+                            <div class="mr-auto mt-3 mb-auto">
+                                <span id="firstName">Name : {{mentorDetail.firstName}}</span>
+                            </div>
+                            <div class="mr-auto mt-3 mb-auto">
+                                <span class="d-none d-sm-block">Fees : {{mentors[i].fees}}</span>
+                            </div>
+                            <div class="mr-auto mt-3 mb-auto">
+                                <span class="d-none d-sm-block">Years of experience : {{mentorDetail.yearOfExperience}}</span>
+                            </div>
+                            <div class="ml-auto mt-auto mb-3 mr-3">
+                                <Button type="button" (click)="forOpen($event,i)" data-toggle="modal" data-target="#myModal"  class=" btn btn-success btn-sm" value="Propose Training">View Details</Button>
+                            </div>
+                        </div>
+            
+                    </a>
+                </div>
+            </div>
+        
+            
+                <br>
+        <div class="container">
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header" style="background-color:paleturquoise">
+                            <h4 class="modal-title">Trainer Details</h4>
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <img src="/assets/male pic.jpg" alt="image cant be displayed" height="100px"
+                                        weight="100px">
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <label id="mentorName">First Name : {{mentorDetails[i].firstName}}</label>
+                                </div>
+                                <div class="row">
+                                    <label>Years of experience : {{mentorDetails[i].yearOfExperience}}</label>
+                                </div>
+                                <div class="row">
+                                    <label>Start Date : {{mentors[i].startDate}}</label>
+                                </div>
+                                <div class="row">
+                                    <label>End Date : {{mentors[i].endDate}}</label>
+                                </div>
+                                <div class="row">
+                                    <label>Start Time : {{mentors[i].startTime}}</label>
+                                </div>
+                                <div class="row">
+                                    <label>End Time : {{mentors[i].endTime}}</label>
+                                </div>
+                                <div class="row">
+                                    <label>Fees: {{mentors[i].fees}}</label>
+                                </div>
+                                <div class="row text-danger" *ngIf="role!='user'">
+                                    Please Sign In to Propose Course
+                                </div>
+                                <div class="row text-success" *ngIf="status==true && routestatus==true">
+                                    Training Proposal Success! Wait For confirmation from trainer.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer" style="background-color:paleturquoise">
+                            <button type="button" class="btn btn-success btn-sm" (click)="onProposal($event,i)">Propose Training</button>
+                        </div>
+
+                    </div>
+                   </div>
+                
+        </div>
+        </div>
+    

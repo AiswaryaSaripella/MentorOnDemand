@@ -1,0 +1,59 @@
+<div>
+    <nav class="navbar navbar-expand-xl">
+
+        <a href="/" class="navbar-brand mb-auto">
+            <img src="/assets/Logo.png" width="150" height="150" alt="Logo can't be displayed" />
+        </a>
+
+        <div *ngIf="( identityService.routeStatus==false)||(identityService.routeStatus==true && identityService.identity=='user')||index==3"
+            class="navbar-nav ml-auto" id="navbarSupportedContent">
+            <button type="button" (click)="onclick($event)" class="btn btn-md btn-default mr-2 button-cursor"
+                style="color:ivory">View
+                Courses</button>
+
+
+        </div>
+
+        <div *ngIf=" identityService.routeStatus==false || index==3 ">
+
+            <app-user-signup></app-user-signup>
+        </div>
+        <div *ngIf=" identityService.routeStatus==false || index==3">
+            <app-user-login></app-user-login>
+        </div>
+        <ul *ngIf="(identityService.routeStatus==true && identityService.identity=='user' && index!=3)"
+            class="navbar-nav ml-auto">
+            <li *ngFor="let navbar of Navbar,index as id" class="nav-item">
+                <form class="form-inline">
+                    <button class="btn btn-default btn-rounded btn-md my-0" (click)="navigate(id)"
+                        type="submit">{{navbar.name}}
+                    </button>
+                </form>
+
+            </li>
+        </ul>
+        <ul *ngIf="(identityService.routeStatus==true && identityService.identity=='mentor' && index!=3)"
+            class="navbar-nav ml-auto">
+            <li *ngFor="let navbar of Navbar,index as id" class="nav-item">
+                <form class="form-inline">
+                    <button class="btn btn-default btn-rounded btn-md my-0" (click)="navigate(id)"
+                        type="submit">{{navbar.name}}
+                    </button>
+                </form>
+
+            </li>
+        </ul>
+    </nav>
+    <br>
+    <br>
+
+    <div class="container ml-auto mr-auto
+    mb-auto mt-auto">
+        <router-outlet></router-outlet>
+    </div>
+
+    
+
+    <div class="navbar navbar-expand-xl" style="height:100%;background-color: black;color:ivory">
+        copyrighted 2019
+    </div>

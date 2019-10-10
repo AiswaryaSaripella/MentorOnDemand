@@ -1,0 +1,24 @@
+<form class="example-form">
+    <div class="form-group">
+            <div class="row form-group ml-2 mt-4">
+                    <label for="search" class="w-25">Choose Course</label>
+                </div>
+        <div class="md-form form-group mt-2">
+            <input type="text" class="form-control" name ="searchValue" #searchValue="ngModel" [(ngModel)]="mentor.searchValue"  placeholder="Search" aria-label="Search">
+          </div>
+        <div class="row form-group ml-2 mt-4">
+            <label for="starttime" class="w-25">start time</label>
+            <label for="endtime" class="w-25 ml-auto mr-auto">end time</label>
+        </div>
+        <div class="row form-group ml-2">
+            <input type="time" name="starttime" [(ngModel)]="mentor.startTime" id="starttime" class="form-control w-25" />
+            <input type="time" name="endtime" [(ngModel)]="mentor.endTime" id="endtime" class="form-control w-25 ml-auto mr-auto" />
+        </div>
+        <div class="row form-group ml-2">
+            <button type="submit" class="btn btn-success" (click)="onSearch($event)">Search</button>
+        </div>
+
+
+    </div>
+</form>
+<router-outlet></router-outlet>

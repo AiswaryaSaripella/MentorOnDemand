@@ -1,0 +1,50 @@
+<div *ngIf="role=='user'">
+    <div *ngIf="length==0" class="text-danger">
+        No Completed Trainings Available
+    </div>
+
+    <div *ngFor="let user of userCurrent;let i=index">
+        <div *ngIf="mentor.progressStatus==100">
+            <div class="container">
+
+                <div class="row">
+                    <div class="card mr-auto" style="width:400px">
+
+                        <img class="card-img-top" src="/assets/spring.png" alt="Card image" style="width:100%"
+                            height="200px"><br>
+                        <div class="card-body">
+
+                            <h4 class="card-title">{{userCurrent[i].courseName}}</h4><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="role=='mentor'">
+        <div *ngIf="length==0" class="text-danger">
+                No Completed Trainings Available
+            </div>
+
+    <div *ngFor="let mentor of mentorCurrent;let i=index">
+        <div *ngIf="mentor.progressStatus==100">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="card mr-auto" style="width:400px">
+
+                        <img class="card-img-top" src="/assets/spring.png" alt="Card image" style="width:100%"
+                            height="200px"><br>
+                        <div class="card-body">
+
+                            <h4 class="card-title">{{mentorCurrent[i].courseName}}</h4><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

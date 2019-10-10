@@ -1,0 +1,176 @@
+<div style="background-color: black;width:100%;height:100%;">
+    <div class="container-fluid">
+
+        <form ngForm (ngSubmit)="form.valid && onSignUp()" novalidate #form="ngForm">
+
+            <div class="jumbotron mb-auto" style="width:50%;">
+
+                <div class="row">
+                    <div class="cols-xl-8">
+                        <h2><strong>SignUp</strong></h2>
+
+                    </div>
+                </div>
+                <hr style="color: black;">
+                <div class="row">
+                    <div class="cols-xl-8">
+                        <img src="/assets/male pic.jpg" alt="photo cant be dispalyed" height="100px" width="100px">
+                    </div>
+                </div>
+                <br>
+                <div class="row form-group">
+                    <div class="cols-xl-8">
+                        <label for="fname">First Name</label>
+                        <input type="text" class="form-control" placeholder="Enter First Name" id="fname" name="fname"
+                            [(ngModel)]="details.fname" #fname="ngModel"
+                            [ngClass]="{'is-invalid':form.submitted && fname.invalid}" required />
+                        <div *ngIf="form.submitted && fname.invalid" class="invalid-feedback">
+                            <div *ngIf="fname.errors.required">First Name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="cols-xl-8">
+                        <label for="lname">Last Name</label>
+                        <input type="text" class="form-control" placeholder="Enter First Name" id="lname" name="lname"
+                            [(ngModel)]="details.lname" #lname="ngModel"
+                            [ngClass]="{'is-invalid':form.submitted && lname.invalid}" required />
+                        <div *ngIf="form.submitted && lname.invalid" class="invalid-feedback">
+                            <div *ngIf="lname.errors.required">Last Name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="cols-xl-8">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control" placeholder="Enter E-mail" id="email" name="email"
+                            [(ngModel)]="details.email" #email="ngModel"
+                            [ngClass]="{'is-invalid':form.submitted && email.invalid}" required email />
+                        <div *ngIf="form.submitted && email.invalid" class="invalid-feedback">
+                            <div *ngIf="email.errors.required">E-mail is required</div>
+                            <div *ngIf="email.errors.email">Enter E-mail in valid format</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="cols-xl-8">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" placeholder="Enter password" id="password"
+                            name="password" [(ngModel)]="details.password" #password="ngModel"
+                            [ngClass]="{'is-invalid':form.submitted && password.invalid}" required minlength="6" />
+                        <div *ngIf="form.submitted && password.invalid" class="invalid-feedback">
+                            <div *ngIf="password.errors.required">Password is required</div>
+                            <div *ngIf="password.errors.minlength">Password should be atleast 6 characters</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="cols-xl-8">
+                        <label for="cpassword">Confirm Password</label>
+                        <input type="password" class="form-control" placeholder="Re-type password" id="cpassword"
+                            name="cpassword" [(ngModel)]="details.cpassword" #cpassword="ngModel"
+                            [ngClass]="{'is-invalid':form.submitted && cpassword.invalid}" required minlength="6" />
+                        <div *ngIf="form.submitted && cpassword.invalid" class="invalid-feedback">
+                            <div *ngIf="details.password!=details.cpassword">Password mismatch </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="cols-xl-8">
+                        <label for="linkedin">LinkedIn URL</label>
+                        <input type="text" class="form-control" placeholder="Enter LinkedIn URL" id="linkedin"
+                            name="linkedin" [(ngModel)]="details.linkedin" #linkedin="ngModel"
+                            [ngClass]="{'is-invalid':form.submitted && linkedin.invalid}" required />
+                        <div *ngIf="form.submitted && cpassword.invalid" class="invalid-feedback">
+                            <div *ngIf="linkedin.errors.required">LinkedIn URL required </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="cols-xl-8">
+                        <label for="courseName">Course Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Your First Course" id="courseName"
+                            name="courseName" [(ngModel)]="details.courseName" #courseName="ngModel" required />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="cols-xl-8">
+                        <label>Calendar</label>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <mat-form-field class="ml-auto mr-auto">
+                        <input matInput [matDatepicker]="start" name="startDate" [(ngModel)]="details.startDate"
+                            placeholder="Choose a start date">
+                        <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+                        <mat-datepicker #start></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field class="ml-auto mr-auto">
+                        <input matInput [matDatepicker]="end" name="endDate" [(ngModel)]="details.endDate"
+                            placeholder="Choose a end date">
+                        <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+                        <mat-datepicker #end></mat-datepicker>
+                    </mat-form-field>
+
+                </div>
+                <div class="row form-group">
+                    <div class="cols-xl-8">
+                        <label>Working hours</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label for="starttime" class="w-25">start time</label>
+                        <label for="endtime" class="w-25 ml-auto mr-auto">end time</label>
+                    </div>
+                    <div class="row">
+                        <input type="time" name="starttime" id="starttime" class="form-control w-25"
+                            [(ngModel)]="details.startTime" />
+                        <input type="time" name="endtime" id="endtime" class="form-control w-25 ml-auto mr-auto"
+                            [(ngModel)]="details.endTime" />
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>Materials used:</label>
+                    <label class="form-check form-check-inline"></label>
+                    <label class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="material1" value="ppt">
+
+                        <span class="form-check-label"> PPT </span>
+                    </label>
+                    <label class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="material2" value="blog">
+
+                        <span class="form-check-label"> Blog</span>
+                    </label>
+                    <label class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="material3" value="video">
+                        <span class="form-check-label"> Video</span>
+                    </label>
+                </div>
+                        <div class="row form-group">
+                            <div class="cols-xl-8">
+                                <label for="courseName">Fees</label>
+                                <input type="text" class="form-control" placeholder="Enter Your Fees" id="fees"
+                                    name="fees" [(ngModel)]="details.fees" #fees="ngModel" required />
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="cols-xl-8">
+                                <label for="courseName">Years Of Experience</label>
+                                <input type="text" class="form-control" placeholder="Enter Your years of Experience"
+                                    id="yearOfExperience" name="yearOfExperience" [(ngModel)]="details.yearOfExperience"
+                                    #yearOfExperience="ngModel" required />
+                            </div>
+                        </div>
+                        
+
+                        <div class="row form-group">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div>
+    <nav class="navbar navbar-expand-xl">
+
+        <a href="/" class="navbar-brand mb-auto">
+            <img src="/assets/Logo.png" width="150" height="150" alt="Logo can't be displayed" />
+        </a>
+        <form class="form-inline">
+            <button class="btn btn-default btn-rounded btn-md my-0 nav-item" (click)="users($event)" type="submit">Users
+            </button>
+        </form>
+        <form class="form-inline">
+            <button class="btn btn-default btn-rounded btn-md my-0 nav-item" (click)="mentors($event)"
+                type="submit">Mentors
+            </button>
+        </form>
+        <form class="form-inline">
+            <button class="btn btn-default btn-rounded btn-md my-0 nav-item" (click)="courses($event)"
+                type="submit">Courses
+            </button>
+        </form>
+        <form class="form-inline">
+            <button class="btn btn-default btn-rounded btn-md my-0 nav-item" (click)="logout($event)"
+                type="submit">Logout
+            </button>
+        </form>
+    </nav>
+</div>
+
+
+<div class="container shadow ">
+    <div *ngIf="type=='users'||type=='mentors'">
+        <div *ngFor="let detail of details,let i=index">
+            <div class="row">
+                <div class="mr-auto mt-3 mb-3">
+                    <img src="/assets/male-photo.jpg" alt="photo cant be dispalyed" height="100px" width="100px">
+                </div>
+                <div class="mr-auto mt-3 mb-auto">
+                    <span id="firstName">Name : {{detail.email}}</span>
+                </div>
+                <div class="mr-auto mt-3 mb-auto">
+                        <span id="firstName">Blocked : {{detail.status}}</span>
+                    </div>
+                <div class="ml-auto mt-auto mb-3 mr-3">
+                    <Button type="button" (click)="block($event,i)" 
+                        class=" btn btn-danger btn-sm" value="Propose Training">Block</Button>
+                </div>
+                <div class="ml-auto mt-auto mb-3 mr-3">
+                        <Button type="button" (click)="unblock($event,i)" 
+                            class=" btn btn-success btn-sm" value="Propose Training">Unblock</Button>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
